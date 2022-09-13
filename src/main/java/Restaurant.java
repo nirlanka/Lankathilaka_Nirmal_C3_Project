@@ -39,6 +39,10 @@ public class Restaurant {
         return null;
     }
 
+    public int calculatePriceOfItems(List<String> itemNames) {
+        return -1;
+    }
+
     public void addToMenu(String name, int price) {
         Item newItem = new Item(name,price);
         menu.add(newItem);

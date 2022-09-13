@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -120,4 +121,21 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>ORDER<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void calculating_item_prices_should_return_correct_total_when_all_requested_items_exist() {
+        assertEquals(restaurant.calculatePriceOfItems(Arrays.asList(
+                "Sweet corn soup",
+                "Vegetable lasagne"
+        )), 119 + 269);
+
+        restaurant.addToMenu("Sizzling brownie", 319);
+        assertEquals(restaurant.calculatePriceOfItems(Arrays.asList(
+                "Sweet corn soup",
+                "Vegetable lasagne",
+                "Sizzling brownie"
+        )), 119 + 269 + 319);
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
