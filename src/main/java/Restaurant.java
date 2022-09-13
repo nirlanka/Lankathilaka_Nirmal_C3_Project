@@ -40,7 +40,15 @@ public class Restaurant {
     }
 
     public int calculatePriceOfItems(List<String> itemNames) {
-        return -1;
+        var price = 0;
+
+        for (var name: itemNames) {
+            var item = findItemByName(name);
+
+            price += item.getPrice();
+        }
+
+        return price;
     }
 
     public void addToMenu(String name, int price) {
